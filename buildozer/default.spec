@@ -25,11 +25,11 @@ source.include_exts = py,png,jpg,kv,atlas
 #source.exclude_patterns = license,images/*/*.jpg
 
 # (str) Application versioning (method 1)
-version.regex = __version__ = ['"](.*)['"]
-version.filename = %(source.dir)s/main.py
+version = 0.1
 
 # (str) Application versioning (method 2)
-# version = 1.2.0
+# version.regex = __version__ = ['"](.*)['"]
+# version.filename = %(source.dir)s/main.py
 
 # (list) Application requirements
 # comma seperated e.g. requirements = sqlite3,kivy
@@ -51,25 +51,34 @@ requirements = kivy
 # (str) Supported orientation (one of landscape, portrait or all)
 orientation = landscape
 
-# (bool) Indicate if the application should be fullscreen or not
-fullscreen = 1
+# (list) List of service to declare
+#services = NAME:ENTRYPOINT_TO_PY,NAME2:ENTRYPOINT2_TO_PY
 
+#
+# OSX Specific
+#
+
+#
+# author = © Copyright Info
 
 #
 # Android specific
 #
 
+# (bool) Indicate if the application should be fullscreen or not
+fullscreen = 1
+
 # (list) Permissions
 #android.permissions = INTERNET
 
 # (int) Android API to use
-#android.api = 14
+#android.api = 19
 
-# (int) Minimum API required (8 = Android 2.2 devices)
-#android.minapi = 8
+# (int) Minimum API required
+#android.minapi = 9
 
 # (int) Android SDK version to use
-#android.sdk = 21
+#android.sdk = 20
 
 # (str) Android NDK version to use
 #android.ndk = 9c
@@ -82,6 +91,9 @@ fullscreen = 1
 
 # (str) Android SDK directory (if empty, it will be automatically downloaded.)
 #android.sdk_path =
+
+# (str) ANT directory (if empty, it will be automatically downloaded.)
+#android.ant_path =
 
 # (str) python-for-android git clone directory (if empty, it will be automatically cloned from github)
 #android.p4a_dir =
@@ -132,6 +144,12 @@ fullscreen = 1
 # (list) Android library project to add (will be added in the
 # project.properties automatically.)
 #android.library_references =
+
+# (str) Android logcat filters to use
+#android.logcat_filters = *:S python:D
+
+# (bool) Copy library instead of making a libpymodules.so
+#android.copy_libs = 1
 
 #
 # iOS specific

@@ -6,7 +6,7 @@ Generic Python packager for Android / iOS. Desktop later.
 
 '''
 
-__version__ = '0.30dev'
+__version__ = '0.32dev'
 
 import os
 import re
@@ -469,10 +469,9 @@ class Buildozer(object):
         self.cmd('curl http://python-distribute.org/distribute_setup.py | venv/bin/python', get_stdout=True, cwd=self.buildozer_dir)
 
         self.debug('Install requirement {} in virtualenv'.format(module))
-        self.cmd('pip install --download-cache={} --target={} {}'.format(
-                self.global_cache_dir, self.applibs_dir, module),
-                env=self.env_venv,
-                cwd=self.buildozer_dir)
+        self.cmd('pip install --target={} {}'.format(self.applibs_dir, module),
+                 env=self.env_venv,
+                 cwd=self.buildozer_dir)
 
     def check_garden_requirements(self):
         '''Ensure required garden packages are available to be included.
@@ -594,6 +593,12 @@ class Buildozer(object):
         if archive.endswith('.tbz2') or archive.endswith('.tar.bz2'):
             # XXX same as before
             self.cmd('tar xjf {0}'.format(archive), cwd=cwd)
+            return
+
+        if archive.endswith('.bin'):
+            # To process the bin files for linux and darwin systems
+            self.cmd('chmod a+x {0}'.format(archive),cwd=cwd)
+            self.cmd('./{0}'.format(archive),cwd=cwd)
             return
 
         if archive.endswith('.zip'):

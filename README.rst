@@ -6,16 +6,16 @@ This tool is currently in alpha.
 Buildozer is a tool for creating application packages easily.
 
 The goal is to have one "buildozer.spec" file in your app directory, describing
-your application requirements and settings such as title, icon, included modules 
+your application requirements and settings such as title, icon, included modules
 etc. Buildozer will use that spec to create a package for Android, iOS, Windows,
-OSX and/or Linux. 
+OSX and/or Linux.
 
-Buildozer currently supports packaging for Android via the `python-for-android 
+Buildozer currently supports packaging for Android via the `python-for-android
 <http://github.com/kivy/python-for-android/>`_
 project, and for iOS via the kivy-ios project. Support for other operating systems
 is intended in the future.
 
-Note that this tool has nothing to do with the eponymous online build service 
+Note that this tool has nothing to do with the eponymous online build service
 `buildozer.io <http://buildozer.io />`_.
 
 Usage example
@@ -31,9 +31,6 @@ Usage example
     # via pip (latest stable)
     sudo pip install buildozer
 
-    # via easy_install
-    sudo easy_install buildozer
-
 #. Go into your application directory and do::
 
     buildozer init
@@ -42,10 +39,8 @@ Usage example
 
 Example of commands::
 
-    # buildozer commands
-    buildozer clean
-
     # buildozer target command
+    buildozer android clean
     buildozer android update
     buildozer android deploy
     buildozer android debug
@@ -108,3 +103,41 @@ config, along with the environment variables that would override them.
 - ``package.name`` -> ``$APP_PACKAGE_NAME``
 - ``android.p4a_dir`` -> ``$APP_ANDROID_P4A_DIR``
 
+Support
+-------
+
+If you need assistance, you can ask for help on our mailing list:
+
+* User Group : https://groups.google.com/group/kivy-users
+* Email      : kivy-users@googlegroups.com
+
+We also have an IRC channel:
+
+* Server  : irc.freenode.net
+* Port    : 6667, 6697 (SSL only)
+* Channel : #kivy
+
+Contributing
+------------
+
+We love pull requests and discussing novel ideas. Check out our
+`contribution guide <http://kivy.org/docs/contribute.html>`_ and
+feel free to improve buildozer.
+
+The following mailing list and IRC channel are used exclusively for
+discussions about developing the Kivy framework and its sister projects:
+
+* Dev Group : https://groups.google.com/group/kivy-dev
+* Email     : kivy-dev@googlegroups.com
+
+IRC channel:
+
+* Server  : irc.freenode.net
+* Port    : 6667, 6697 (SSL only)
+* Channel : #kivy-dev
+
+License
+-------
+
+Buildozer is released under the terms of the MIT License. Please refer to the
+LICENSE file.
