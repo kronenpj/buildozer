@@ -351,7 +351,10 @@ class Buildozer(object):
         show_output = kwargs.pop('show_output')
 
         if show_output:
-            kwargs['logfile'] = codecs.getwriter('utf8')(stdout)
+            if IS_PY3:
+                kwargs['logfile'] = codecs.getwriter('utf8')(stdout.buffer)
+            else:
+                kwargs['logfile'] = codecs.getwriter('utf8')(stdout)
 
         if not sensible:
             self.debug('Run (expect) {0!r}'.format(command))
@@ -889,7 +892,10 @@ class Buildozer(object):
         print('Available targets:')
         targets = list(self.targets())
         for target, m in targets:
-            doc = m.__doc__.strip().splitlines()[0].strip()
+            try:
+                doc = m.__doc__.strip().splitlines()[0].strip()
+            except Exception:
+                doc = '<no description>'
             print('  {0:<18} {1}'.format(target, doc))
 
         print('')
